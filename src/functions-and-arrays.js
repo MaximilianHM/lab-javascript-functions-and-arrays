@@ -167,28 +167,7 @@ uniquifyArray(wordsUnique);
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
-/*
-function doesWordExist(checkWords) {
-  let checkNull = null;
-  
-  if (checkWords.length === 0) {
-    return checkNull;
-  }
 
-  for (let i = 0; i < checkWords.length; i++) {
-      if (checkWords[i].includes(checkWords) === false) {
-        return false;
-      } else if (checkWords[i].includes(checkWords) === true) {
-        return true;
-      } else if (checkWords[i].includes(checkWords) === checkWords[i]) {
-        return true;
-      }
-  }
-}
-
-
-doesWordExist(wordsFind)
-*/
 function doesWordExist(arr, wordsearch) {
   let ifNull = null;
 
@@ -261,7 +240,37 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(arrAdj){
+    
+  let numbAdj = 0, result;
+  for (let i = 0; i < 5; i++)
+  {
+      for (let j = 0; j < 5; j++)
+      {
+          if ((j - 3) >= 0)
+          {
+              result = arrAdj[i][j] * arrAdj[i][j - 1]
+                      * arrAdj[i][j - 2]
+                      * arrAdj[i][j - 3];
+              if (numbAdj < result)
+                  numbAdj = result;
+          }
+          if ((i - 3) >= 0)
+          {
+              result = arrAdj[i][j] * arrAdj[i - 1][j]
+                      * arrAdj[i - 2][j]
+                      * arrAdj[i - 3][j];
+
+              if (numbAdj < result)
+                  numbAdj = result;
+          }
+      }
+  }
+
+  return numbAdj;
+}
+
+greatestProduct(matrix, 7)
 
 
 
